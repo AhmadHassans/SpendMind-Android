@@ -1,0 +1,19 @@
+Add the following entries inside the <application> tag in
+android/app/src/main/AndroidManifest.xml:
+
+NOTE: BootReceiver is already declared in the manifest. Update it to also
+handle QUICKBOOT_POWERON if desired, and add NotificationReceiver and the
+Glance widget receiver as shown below.
+
+<!-- Notification Receiver (triggered by BootReceiver alarm) -->
+<receiver android:name=".core.receivers.NotificationReceiver" android:exported="false"/>
+
+<!-- Glance App Widget -->
+<receiver android:name=".widget.SpendMindWidgetReceiver" android:exported="true">
+    <intent-filter>
+        <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+    </intent-filter>
+    <meta-data
+        android:name="android.appwidget.provider"
+        android:resource="@xml/spend_mind_widget_info"/>
+</receiver>

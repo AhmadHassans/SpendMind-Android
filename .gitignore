@@ -1,0 +1,22 @@
+# Build output
+build/
+app/build/
+.gradle/
+
+# Local config (contains SDK path)
+local.properties
+
+# Secrets — never commit
+gradle.properties
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+**/.DS_Store
+
+# Android
+*.apk
+*.aab
+*.dex
+*.class
