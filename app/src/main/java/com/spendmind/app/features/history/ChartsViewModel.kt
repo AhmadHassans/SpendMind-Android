@@ -6,6 +6,7 @@ import com.spendmindai.app.core.data.repository.CategoryRepository
 import com.spendmindai.app.core.data.repository.ExpenseRepository
 import com.spendmindai.app.core.data.repository.UserPreferencesRepository
 import com.spendmindai.app.core.domain.model.Category
+import com.spendmindai.app.core.domain.model.Expense
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -28,6 +29,7 @@ data class CategoryChartData(
 data class ChartsUiState(
     val categoryChartData: List<CategoryChartData> = emptyList(),
     val expensesByCategory: Map<String, Double> = emptyMap(),
+    val filteredExpenses: List<Expense> = emptyList(),
     val weeklyTotals: List<Pair<String, Double>> = emptyList(),
     val totalAmount: Double = 0.0,
     val currency: String = "USD",
@@ -111,6 +113,7 @@ class ChartsViewModel @Inject constructor(
                 ChartsUiState(
                     categoryChartData = chartData,
                     expensesByCategory = byCategory,
+                    filteredExpenses = filtered,
                     weeklyTotals = weekly,
                     totalAmount = total,
                     currency = prefs.currency,
